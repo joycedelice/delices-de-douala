@@ -1,0 +1,80 @@
+.header{
+    background-color:#101827;
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.logotitle{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 220px;
+    height: 110px;
+}
+h3{
+   font-family: 'Great Vibes', cursive;
+    color: #F4B942;
+    font-size: 30px;
+}
+.compt{
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
+.counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #F4B942;
+    
+}
+.counter p {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.counter h4 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+/* Le trait vertical séparateur */
+.divider {
+  border-left: 2px solid #F4B942; /* Trait blanc semi-transparent */
+  text-align: center;
+  width: 2px;                  /* Epaisseur du trait */
+  height: 50px;                /* Hauteur réduite pour ne pas toucher les bords */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  
+}
+@media (max-width:480px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-right: 20px;
+    }
+    .compt{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+
+    
+}

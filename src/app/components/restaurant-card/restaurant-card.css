@@ -1,0 +1,74 @@
+/* Style du conteneur de la carte (Fond clair) */
+.card {
+  background-color: #ffffff; /* Fond blanc pur */
+  color: #1e293b; /* Texte foncé pour une excellente lisibilité */
+  border: 1px solid #e2e8f0; /* Bordure grise claire et subtile */
+  border-top: 3px solid #f3ba2f; /* Rappel doré du header sur le haut de la carte */
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre douce sur fond clair */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 290px;
+  height: 200px;
+}
+
+/* Effet de survol sur la carte */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du restaurant */
+.card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #13214c; /* Bleu nuit assorti à ton header */
+}
+
+/* Quartier */
+.district {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #334155; /* Gris moyen */
+
+}
+
+/* Spécialité culinaire */
+.specialty {
+  margin: 4px 0 12px 0;
+  font-size: 0.95rem;
+  color: #334155; /* Gris foncé très lisible */
+}
+
+/* Alignement du composant d'étoiles et du texte de note */
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto; /* Aligne la zone de note en bas de la carte */
+}
+
+/* Texte sous ou à côté des étoiles */
+.rating-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Style spécifique pour le texte "Cliquez !" */
+.rating-text .prompt {
+  color: #d97706; /* Doré ambré (plus foncé pour être bien visible sur blanc) */
+  font-style: italic;
+  cursor: pointer;
+}
+.essaie{
+    margin: 0;
+    padding: 0;
+}

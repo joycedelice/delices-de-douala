@@ -1,0 +1,24 @@
+<div class="card">
+
+  <h3>{{ restaurant().name }}</h3>
+  <p class="district">{{ restaurant().district }}, Douala</p>
+  <p class="specialty">Spécialité : {{ restaurant().specialty }}</p>
+
+  <div class="essaie">
+
+ 
+  <div class="rating-section">
+    <app-star-rating [currentRating]="restaurant().currentRating"
+      (ratingChanged)="selectRating($event)"></app-star-rating>
+  </div>
+
+
+  <div class="rating-text">
+    @if (restaurant().currentRating > 0) {
+    <span>({{ restaurant().currentRating }}/5)</span>
+    } @else {
+    <span class="prompt">Cliquez !</span>
+    }
+  </div>
+  </div>
+</div>

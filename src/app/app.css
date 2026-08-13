@@ -1,0 +1,33 @@
+main{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background: linear-gradient(135deg, #fffdf8, #f8f0df);
+}
+.mesboutons{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.btn-toggle {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Style appliqué automatiquement quand showOnlyTopRated() vaut true */
+.btn-toggle.active {
+  background-color: #f3ba2f; /* Jaune doré */
+  color: #0c101c;
+  border-color: #d97706;
+  box-shadow: 0 2px 8px rgba(243, 186, 47, 0.4);
+}

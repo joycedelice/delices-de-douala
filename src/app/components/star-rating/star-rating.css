@@ -1,0 +1,25 @@
+.star {
+  font-size: 1.6rem;
+  color: #ccc; /* Couleur par défaut (grise) */
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  
+}
+
+/* Étoile dorée lorsqu'elle est active (notée ou survolée) */
+.star.active {
+  color: #ffc107; 
+  transform: scale(1.05);
+}
+
+/* Bonus facultatif : effet de grossissement au survol */
+.star:hover {
+  transform: scale(1.2);
+}
+.click{
+    color: #d9a405;
+    
+}
+
+

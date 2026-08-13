@@ -1,0 +1,10 @@
+{
+    "buildCommand":"npm run build ",
+    "outputDirectory":"dist/jour4-librairies/browser",
+    "rewrites":[
+        {
+            "source":"/(.*)",
+            "destination":"/index.html"
+        }
+    ]
+}
