@@ -1,6 +1,6 @@
 {
     "buildCommand":"npm run build ",
-    "outputDirectory":"dist/jour4-librairies/browser",
+    "outputDirectory":"dist/delices-de-douala/browser",
     "rewrites":[
         {
             "source":"/(.*)",
