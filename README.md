@@ -1,59 +1,37 @@
-# DelicesDeDouala
+# 🍽️ Délices de Douala
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.5.
+Une application web dynamique et réactive développée avec **Angular**, permettant de découvrir, noter et filtrer les meilleurs restaurants de la ville de Douala.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Démo en ligne
 
-```bash
-ng serve
-```
+🔗 **Lien Vercel :** [https://delices-de-douala-344o.vercel.app/](https://delices-de-douala-344o.vercel.app/) 
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ✨ Fonctionnalités
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- ⭐️ **System de notation :** Attributions de notes par étoiles avec mise à jour réactive.
+- 📊 **Statistiques en temps réel :** Compteur du nombre de restaurants notés et calcul de la note moyenne via les `computed()` signals.
+- 🔀 **Tri dynamique :** Affichage automatique des restaurants triés par note décroissante.
+- 🎯 **Filtre rapide :** Option "★ 4 étoiles et plus" (bouton toggle) pour afficher uniquement les coups de cœur.
+- ⚡️ **Architecture Angular moderne :** Utilisation complète des **Angular Signals** (`signal`, `computed`, `input`, `output`).
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📸 Aperçu (Screenshots)
 
-```bash
-ng generate --help
-```
+| Écran principal | Filtre Top Restaurants |
+| :---: | :---: |
+| ![Accueil](images/screenshots/Accueil.png) | ![Filtre](images/screenshots/filter.png) |
 
-## Building
+*(Optionnel : Remplace les chemins ci-dessus par les images de ton choix, ou glisse-dépose simplement tes images directement sur GitHub)*
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🛠️ Technologies utilisées
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Front-end :** Angular (Signals, Standalone Components)
+- **Langages :** TypeScript, HTML5, CSS3 
+- **Déploiement :** Vercel
