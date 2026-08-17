@@ -3,11 +3,12 @@ import { Header } from './components/header/header';
 import { RestaurantList } from './components/restaurant-list/restaurant-list';
 import { Restaurant } from './models/restaurant';
 import { CarteComponent } from './components/carte/carte';
+import { InscriptionComponent } from './components/inscription/inscription';
 
 
 @Component({
   selector: 'app-root',
-  imports: [ Header , RestaurantList ,CarteComponent],
+  imports: [ Header , RestaurantList ,CarteComponent , InscriptionComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
