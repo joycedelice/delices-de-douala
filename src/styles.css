@@ -1,6 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-    margin: 0;
-    padding: 0;
-     background: linear-gradient(135deg, #fffdf8, #f8f0df);
+
+:root {
+  /* Couleurs principales */
+  --color-navy: #0f1b33;
+  --color-navy-dark: #0a1226;
+  --color-gold: #d4a24e;
+  --color-gold-light: #e8c583;
+  --color-cream: #faf3e5;
+  --color-cream-dark: #f0e6d2;
+  --color-white: #ffffff;
+  --color-text-dark: #1a1a2e;
+  --color-text-muted: #6b6b7a;
+  --color-star-empty: #d0d0d0;
+
+  /* Typographie */
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Inter', 'Segoe UI', sans-serif;
+
+  /* Ombres et rayons */
+  --shadow-card: 0 4px 12px rgba(15, 27, 51, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(15, 27, 51, 0.15);
+  --radius-card: 12px;
+  --radius-button: 8px;
+}
+
+body {
+  background-color: var(--color-cream);
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+h1, h2, h3, .title-serif {
+  font-family: var(--font-serif);
+  color: var(--color-navy);
 }

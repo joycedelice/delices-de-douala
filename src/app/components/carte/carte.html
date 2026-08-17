@@ -1,0 +1,44 @@
+<div class="carte">
+
+  <!-- Plat du jour -->
+  @if (platDuJour(); as plat) {
+    <div class="plat-du-jour">
+      <span class="badge">🌟 Plat du jour</span>
+      <span class="plat-nom">{{ plat.nom }}</span>
+      <span class="plat-prix"> {{ plat.prix }} FCFA </span>
+    </div>
+  }
+
+  <!-- Boutons de filtre -->
+  <div class="filtres-categorie">
+    @for (cat of categories; track cat) {
+      <button
+        class="btn-categorie"
+        [class.active]="categorieSelectionnee() === cat"
+        (click)="selectionnerCategorie(cat)">
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  @if (platsResource.isLoading()) {
+    <p class="loading-message">Chargement de la carte...</p>
+  } @else if (platsResource.error()) {
+    <p class="error-message">
+      Impossible de charger le menu. Veuillez réessayer plus tard.
+    </p>
+  } @else if (platsFiltres().length === 0) {
+    <p class="empty-message">Aucun plat dans cette catégorie.</p>
+  } @else {
+    <ul class="plats-list">
+      @for (plat of platsFiltres(); track plat.id) {
+        <li class="plat-item">
+          <span class="plat-nom">{{ plat.nom }}</span>
+          <span class="plat-categorie">{{ plat.categorie }}</span>
+          <span class="plat-prix">{{ plat.prix }} FCFA </span>
+        </li>
+      }
+    </ul>
+  }
+
+</div>
