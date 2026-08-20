@@ -1,22 +1,19 @@
- <div class="titleList">
-        <h2>Nos <span>Meilleurs </span>Restaurants</h2>
-        <p>Decouvrez et partagez vos experiences culinaires</p>
-        
-    </div>
-<div class="restaurantList">
-   
-    <div class="resto">
+<div class="titleList">
+  <h2>Nos <span>Meilleurs </span>Restaurants</h2>
+  <p>Découvrez et partagez vos expériences culinaires</p>
+</div>
 
-        @for (restaurant of restaurants(); track restaurant.id) {
-            <app-restaurant-card 
-            [restaurant]="restaurant"
-            (ratingChanged)="sendApp.emit($event)">
-            </app-restaurant-card>
-        } @empty {
-            <!-- Ce bloc s'affiche SI la liste transmise est vide (length === 0) -->
-            <div class="empty-state">
-            <p class="empty-msg">Aucun restaurant n'a reçu 4 étoiles ou plus pour le moment.</p>
-            </div>
-        }
-    </div>
+<div class="restaurantList">
+  <div class="resto">
+    @for (restaurant of restaurants(); track restaurant.id) {
+      <app-restaurant-card 
+        [restaurant]="restaurant"
+        (ratingChanged)="onSendApp($event)">
+      </app-restaurant-card>
+    } @empty {
+      <div class="empty-state">
+        <p class="empty-msg">Aucun restaurant n'a reçu 4 étoiles ou plus pour le moment.</p>
+      </div>
+    }
+  </div>
 </div>

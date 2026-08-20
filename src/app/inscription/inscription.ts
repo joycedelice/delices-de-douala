@@ -6,43 +6,42 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './inscription.html',
-  styleUrl: './inscription.css'
 })
 export class InscriptionComponent {
-  // Champ du formulaire — état transitoire
+  // Champ du formulaire (état transitoire)
   nom = '';
 
-  // La liste des clients — état applicatif, donc en signal
+  // Liste des clients (état applicatif)
   private readonly _clients = signal<string[]>([]);
   readonly clients = this._clients.asReadonly();
-
   // Indice de la ligne en cours de modification (null = mode ajout)
   private readonly _indexEdite = signal<number | null>(null);
   readonly enEdition = computed(() => this._indexEdite() !== null);
 
-  // Ajoute ou modifie un client
+  // Enregistrer (Ajouter ou Modifier)
   enregistrer(): void {
     const valeur = this.nom.trim();
     if (!valeur) return;
 
     const i = this._indexEdite();
     if (i === null) {
-      this._clients.update((l) => [...l, valeur]); // ajout
+      // Ajout : création d'un nouveau tableau immutable
+      this._clients.update((l) => [...l, valeur]);
     } else {
-      this._clients.update((l) =>
-        l.map((c, idx) => (idx === i ? valeur : c))); // modification en place
+      // Modification en place
+      this._clients.update((l) => l.map((c, idx) => (idx === i ? valeur : c)));
       this._indexEdite.set(null);
     }
-    this.nom = ''; // on vide le champ après l'action
+    this.nom = ''; // Vider le champ
   }
 
-  // Recharge la ligne i dans le champ, pour la modifier
+  // Préparer la modification
   modifier(i: number): void {
-    this.nom = this.clients()[i];
+    this.nom = this.clients()[i]; // Recharge la valeur dans le champ
     this._indexEdite.set(i);
   }
 
-  // Supprime la ligne i
+  // Supprimer
   supprimer(i: number): void {
     this._clients.update((l) => l.filter((_, idx) => idx !== i));
   }

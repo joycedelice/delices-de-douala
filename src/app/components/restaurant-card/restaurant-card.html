@@ -1,24 +1,29 @@
 <div class="card">
+  <div class="card-image-container">
+    @if (restaurant().imageUrl) {
+      <img [src]="restaurant().imageUrl" [alt]="restaurant().name" class="card-img" />
+    } @else {
+      <!-- Image fallback par défaut si aucune image n'est fournie -->
+      <img src="assets/images/restaurants/default-restaurant.jpg" [alt]="restaurant().name" class="card-img" />
+    }
+  </div>
+  
+  <h3>{{ restaurant().name }}</h3>
+  <p class="district">{{ restaurant().district }}, Douala</p>
+  <p class="specialty">Spécialité : {{ restaurant().specialty }}</p>
 
-  <h3>{{ restaurant().name }}</h3>
-  <p class="district">{{ restaurant().district }}, Douala</p>
-  <p class="specialty">Spécialité : {{ restaurant().specialty }}</p>
+  <div class="rating-container">
+    <app-star-rating 
+      [currentRating]="restaurant().currentRating"
+      (ratingChanged)="selectRating($event)">
+    </app-star-rating>
 
-  <div class="essaie">
-
- 
-  <div class="rating-section">
-    <app-star-rating [currentRating]="restaurant().currentRating"
-      (ratingChanged)="selectRating($event)"></app-star-rating>
-  </div>
-
-
-  <div class="rating-text">
-    @if (restaurant().currentRating > 0) {
-    <span>({{ restaurant().currentRating }}/5)</span>
-    } @else {
-    <span class="prompt">Cliquez !</span>
-    }
-  </div>
-  </div>
+    <div class="rating-text">
+      @if (restaurant().currentRating > 0) {
+        <span>({{ restaurant().currentRating }}/5)</span>
+      } @else {
+        <span class="prompt">Cliquez !</span>
+      }
+    </div>
+  </div>
 </div>

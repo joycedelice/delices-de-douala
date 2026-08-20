@@ -1,27 +1,16 @@
+<app-header [ratedCount]="ratedCount()" [averageRating]="averageRating()"></app-header>
+
 <main class="container">
+  <router-outlet />
+</main>
+<nav class="main-nav">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+  <a routerLink="/restaurants" routerLinkActive="active">Restaurants</a>
+  <a routerLink="/plats" routerLinkActive="active">Plats</a>
+  <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
+  <a routerLink="/connexion" routerLinkActive="active">Connexion</a>
+</nav>
 
-    <!-- Zone des filtres / contrôles -->
-    <main class="container">
-        <!-- Header -->
-        <app-header [ratedCount]="ratedCount()" [averageRating]="averageRating()">
-        </app-header>
-        <div class="mesboutons">
-            <!-- Zone des filtres / contrôles -->
-            <div class="filter-bar">
-                <button class="btn-toggle" [class.active]="showOnlyTopRated()" (click)="toggleFilter()">
-                    ★ 4 étoiles et plus
-                </button>
-            </div>
-            <!--bouton pour le classement par odre decroissants-->
-            <button class="btn-toggle" [class.active]="classement()" (click)="toggleClassement()">
-                ⬇ Classer par note
-            </button>
-        </div>
-        <!-- Liste des restaurants : ON PASSE LA LISTE FILTRÉE ET TRIÉE -->
-        <app-restaurant-list [restaurants]="displayedRestaurants()" (sendApp)="onSendApp($event)">
-        </app-restaurant-list>
-
-        <app-carte></app-carte>
-        <app-inscription></app-inscription>
-    </main>
+<main class="container">
+  <router-outlet />
 </main>

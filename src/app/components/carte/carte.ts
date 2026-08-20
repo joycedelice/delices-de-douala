@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-
-import { MenuService } from '../../services/menu.service';
+import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MenuService } from '../../services/menu';
 
 @Component({
   selector: 'app-carte',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './carte.html',
   styleUrl: './carte.css'
 })

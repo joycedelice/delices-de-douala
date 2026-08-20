@@ -1,28 +1,15 @@
 <h1>Délices de Douala — Inscriptions</h1>
 
-<!-- Étape 1 : le formulaire -->
 <form class="form-inline">
-  <input type="text" name="nom"
-    placeholder="Nom du client"
-    [(ngModel)]="nom"
-    required />
-  
-  <button type="button"
-    [disabled]="!nom.trim()"
-    (click)="enregistrer()">
+  <input type="text" name="nom" placeholder="Nom du client" [(ngModel)]="nom" required />
+  <button type="button" [disabled]="!nom.trim()" (click)="enregistrer()">
     {{ enEdition() ? 'Modifier' : 'Ajouter' }}
   </button>
+  @if (!nom.trim()) {
+    <small class="erreur">Le nom est obligatoire.</small>
+  }
 </form>
 
-<!-- Étape 5 : validation - message si champ vide -->
-@if (!nom.trim()) {
-  <small class="erreur">Le nom est obligatoire.</small>
-}
-
-<!-- Aperçu en direct -->
-<p>Aperçu : {{ nom }}</p>
-
-<!-- La liste des clients -->
 @if (clients().length === 0) {
   <p>Aucun client inscrit.</p>
 } @else {

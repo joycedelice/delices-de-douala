@@ -1,33 +1,30 @@
-main{
-    margin: 0;
-    padding: 0;
-}
-.container{
-    background: linear-gradient(135deg, #fffdf8, #f8f0df);
-}
-.mesboutons{
-    display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    gap: 20px;
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #13214c;
+  padding: 0.85rem 1rem;
+  flex-wrap: wrap;
 }
 
-.btn-toggle {
-  background-color: #f1f5f9;
-  color: #475569;
-  border: 1px solid #cbd5e1;
-  padding: 8px 16px;
-  border-radius: 20px;
+.main-nav a {
+  color: #ffffff;
+  text-decoration: none;
   font-weight: 600;
-  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   transition: all 0.2s ease;
 }
 
-/* Style appliqué automatiquement quand showOnlyTopRated() vaut true */
-.btn-toggle.active {
-  background-color: #f3ba2f; /* Jaune doré */
-  color: #0c101c;
-  border-color: #d97706;
-  box-shadow: 0 2px 8px rgba(243, 186, 47, 0.4);
+.main-nav a.active, 
+.main-nav a:hover {
+  background-color: #d89b18;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
 }

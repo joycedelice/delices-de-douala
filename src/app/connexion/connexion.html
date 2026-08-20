@@ -1,0 +1,37 @@
+<div class="form-container">
+  <h1>Connexion Délices de Douala</h1>
+
+  <form [formGroup]="connexionForm" (ngSubmit)="soumettre()">
+    <div class="form-line">
+      <div class="field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Email" />
+      </div>
+    </div>
+    @if (email.touched && email.invalid) {
+      @if (email.hasError('required')) {
+        <small class="erreur">L'email est requis.</small>
+      } @else if (email.hasError('email')) {
+        <small class="erreur">Le format de l'email est invalide.</small>
+      }
+    }
+
+    <div class="form-line">
+      <div class="field">
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Mot de passe" />
+      </div>
+    </div>
+    @if (password.touched && password.invalid) {
+      @if (password.hasError('required')) {
+        <small class="erreur">Le mot de passe est requis.</small>
+      } @else if (password.hasError('minlength')) {
+        <small class="erreur">6 caractères minimum.</small>
+      }
+    }
+
+    <button type="submit" class="btn" [disabled]="connexionForm.invalid">
+      Se connecter
+    </button>
+  </form>
+</div>
