@@ -1,9 +1,7 @@
 export interface Plat {
-  id: number | string;
+  id: string;
   nom: string;
-  slug: string;
   prix: number;
-  image: string;
-  description: string;
-  categorie?: string;
+  categorie: 'Plats' | 'Grillades' | 'Végétarien' | 'Boissons';
+  disponible: boolean;
 }

@@ -1,16 +1,32 @@
-<app-header [ratedCount]="ratedCount()" [averageRating]="averageRating()"></app-header>
+<app-header
+  [ratedCount]="ratedCount()"
+  [averageRating]="averageRating()"
+/>
 
-<main class="container">
-  <router-outlet />
-</main>
-<nav class="main-nav">
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
-  <a routerLink="/restaurants" routerLinkActive="active">Restaurants</a>
-  <a routerLink="/plats" routerLinkActive="active">Plats</a>
-  <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
-  <a routerLink="/connexion" routerLinkActive="active">Connexion</a>
-</nav>
+<div class="toolbar">
+  <button
+    [class.active]="sortDesc()"
+    (click)="sortDesc.set(!sortDesc())"
+  >
+    {{ sortDesc() ? 'Annuler le tri' : 'Trier par note décroissante' }}
+  </button>
+  <button
+    [class.active]="onlyTopRated()"
+    (click)="onlyTopRated.set(!onlyTopRated())"
+  >
+    {{ onlyTopRated() ? 'Afficher tous' : 'Voir uniquement ≥ 4 ★' }}
+  </button>
+</div>
 
-<main class="container">
-  <router-outlet />
-</main>
+<!-- Gestion des 3 états réactifs httpResource -->
+@if (restaurantsRes.isLoading()) {
+  <p class="loading">Chargement des délices de Douala...</p>
+} @else if (restaurantsRes.error()) {
+  <p class="error">Impossible de joindre le serveur. Vérifiez l'URL de l'API.</p>
+} @else {
+  <app-restaurant-list 
+    [restaurants]="displayedRestaurants()" 
+    (restaurantRated)="onRestaurantRated($event)" 
+  />
+}
+<app-carte></app-carte>

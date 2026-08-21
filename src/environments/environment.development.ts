@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  serverUrl: '/api',
-  restaurantName: 'Délices de Douala'
+  serverUrl: 'http://localhost:8080'
+  
 };

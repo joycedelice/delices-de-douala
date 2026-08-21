@@ -1,31 +1,64 @@
-import { Component, computed, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Header } from './components/header/header';
-import { Restaurant } from './models/restaurant';
+import { RestaurantListComponent } from './components/restaurant-list/restaurant-list';
+import { Restaurant } from './models/restaurant'; // <-- Import ajouté !
+import { RestaurantService } from './services/restaurant';
+import { CarteComponent } from './components/carte/carte';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, Header],
+  imports: [Header, RestaurantListComponent, CarteComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  restaurants = signal<Restaurant[]>([ 
-    { id: 1, name: 'Le Calao Doré', district: 'Akwa', specialty: 'Ndolé aux crevettes', currentRating: 0, imageUrl: 'images/resto4.png' }, 
-    { id: 2, name: 'Chez Madame Ngono', district: 'Bonapriso', specialty: 'Eru aux pieds de bœuf', currentRating: 0, imageUrl: 'images/resto2.png' }, 
-    { id: 3, name: 'La Fourchette', district: 'Bonanjo', specialty: 'Poulet DG', currentRating: 0, imageUrl: 'images/resto3.png' }, 
-    { id: 4, name: 'Saveurs du Wouri', district: 'Bonamoussadi', specialty: 'Poisson braisé', currentRating: 0, imageUrl: 'images/resto1.png' }, 
-    { id: 5, name: "L'Akwa Gourmand", district: 'Akwa', specialty: 'Bobolo et sauce arachide', currentRating: 0, imageUrl: 'images/resto5.png' }, 
-    { id: 6, name: 'Le Royal de Bali', district: 'Bali', specialty: 'Koki et plantain', currentRating: 0, imageUrl: 'images/resto6.png' } 
-  ]); 
+  // 1. Injection du service Angular moderne sans constructeur
+  private readonly restaurantService = inject(RestaurantService);
 
-  ratedCount = computed(() => this.restaurants().filter(r => r.currentRating > 0).length);
+  // 2. Signals pour les filtres d'affichage UI
+  readonly sortDesc = signal(false);
+  readonly onlyTopRated = signal(false);
 
-  averageRating = computed(() => {
-    const rated = this.restaurants().filter(r => r.currentRating > 0);
-    if (rated.length === 0) return 0;
-    const sum = rated.reduce((total, r) => total + r.currentRating, 0);
-    return Number((sum / rated.length).toFixed(1));
+  // 3. Récupération des données et de l'état HTTP depuis le service[cite: 1]
+  readonly restaurantsRes = this.restaurantService.restaurantsResource;
+  readonly restaurants = this.restaurantService.restaurants;
+
+  // 4. Calcul du nombre de restaurants ayant reçu au moins une note[cite: 1]
+  readonly ratedCount = computed(() => {
+    const list = this.restaurants() ?? [];
+    return list.filter((r) => r.currentRating > 0).length;
   });
+
+  // 5. Calcul de la moyenne générale des notes[cite: 1]
+  readonly averageRating = computed(() => {
+    const list = this.restaurants() ?? [];
+    const rated = list.filter((r) => r.currentRating > 0);
+    
+    if (rated.length === 0) return 0;
+    
+    const sum = rated.reduce((acc, r) => acc + r.currentRating, 0);
+    return Math.round((sum / rated.length) * 10) / 10;
+  });
+
+  // 6. Application des filtres de tri et de note minimale sur la liste[cite: 1]
+  readonly displayedRestaurants = computed(() => {
+    const list = this.restaurants() ?? [];
+    let result = [...list];
+
+    if (this.onlyTopRated()) {
+      result = result.filter((r) => r.currentRating >= 4);
+    }
+
+    if (this.sortDesc()) {
+      result = result.sort((a, b) => b.currentRating - a.currentRating);
+    }
+
+    return result;
+  });
+
+  // 7. Relais de l'événement de notation vers le service[cite: 1]
+  onRestaurantRated(event: { id: string | number; rating: number }): void {
+    this.restaurantService.updateRating(event.id, event.rating);
+  }
 }

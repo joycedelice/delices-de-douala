@@ -1,0 +1,50 @@
+[
+  {
+    "id": "r1",
+    "name": "Le Calao Doré",
+    "district": "Akwa",
+    "specialty": "Ndolé aux crevettes",
+    "currentRating": 0,
+    "imageUrl": "images/resto4.png"
+  },
+  {
+    "id": "r2",
+    "name": "Chez Madame Ngono",
+    "district": "Bonapriso",
+    "specialty": "Eru aux pieds de bœuf",
+    "currentRating": 0,
+    "imageUrl": "images/resto2.png"
+  },
+  {
+    "id": "r3",
+    "name": "La Fourchette",
+    "district": "Bonanjo",
+    "specialty": "Poulet DG",
+    "currentRating": 0,
+    "imageUrl": "images/resto3.png"
+  },
+  {
+    "id": "r4",
+    "name": "Saveurs du Wouri",
+    "district": "Bonamoussadi",
+    "specialty": "Poisson braisé",
+    "currentRating": 0,
+    "imageUrl": "images/resto1.png"
+  },
+  {
+    "id": "r5",
+    "name": "L'Akwa Gourmand",
+    "district": "Akwa",
+    "specialty": "Bobolo et sauce arachide",
+    "currentRating": 0,
+    "imageUrl": "images/resto5.png"
+  },
+  {
+    "id": "r6",
+    "name": "Le Royal de Bali",
+    "district": "Bali",
+    "specialty": "Koki et plantain",
+    "currentRating": 0,
+    "imageUrl": "images/resto6.png"
+  }
+]

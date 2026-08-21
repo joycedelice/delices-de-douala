@@ -1,19 +1,20 @@
-<div class="titleList">
-  <h2>Nos <span>Meilleurs </span>Restaurants</h2>
-  <p>Découvrez et partagez vos expériences culinaires</p>
-</div>
+<h2 class="section-title">
+  Nos <span class="accent">Meilleurs</span> Restaurants
+</h2>
+<p class="section-subtitle">Découvrez et partagez vos expériences culinaires</p>
 
-<div class="restaurantList">
-  <div class="resto">
-    @for (restaurant of restaurants(); track restaurant.id) {
-      <app-restaurant-card 
-        [restaurant]="restaurant"
-        (ratingChanged)="onSendApp($event)">
-      </app-restaurant-card>
-    } @empty {
-      <div class="empty-state">
-        <p class="empty-msg">Aucun restaurant n'a reçu 4 étoiles ou plus pour le moment.</p>
-      </div>
-    }
-  </div>
+<div class="grid">
+  @if (restaurants().length === 0) {
+    <p class="empty">Aucun restaurant disponible pour le moment.</p>
+  } @else {
+   <!-- restaurant-list.html -->
+<div class="restaurant-grid">
+  @for (resto of restaurants(); track resto.id) {
+    <app-restaurant-card 
+      [restaurant]="resto" 
+      (ratingChanged)="onCardRated($event)" 
+    />
+  }
+</div>
+  }
 </div>

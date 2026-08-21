@@ -1,29 +1,33 @@
 <div class="card">
-  <div class="card-image-container">
-    @if (restaurant().imageUrl) {
-      <img [src]="restaurant().imageUrl" [alt]="restaurant().name" class="card-img" />
-    } @else {
-      <!-- Image fallback par défaut si aucune image n'est fournie -->
-      <img src="assets/images/restaurants/default-restaurant.jpg" [alt]="restaurant().name" class="card-img" />
-    }
-  </div>
-  
-  <h3>{{ restaurant().name }}</h3>
-  <p class="district">{{ restaurant().district }}, Douala</p>
-  <p class="specialty">Spécialité : {{ restaurant().specialty }}</p>
+  @if (restaurant().imageUrl) {
+    <img class="card-img" [src]="restaurant().imageUrl" [alt]="restaurant().name" />
+  }
 
-  <div class="rating-container">
-    <app-star-rating 
-      [currentRating]="restaurant().currentRating"
-      (ratingChanged)="selectRating($event)">
-    </app-star-rating>
+  <h3 class="card-title">{{ restaurant().name }}</h3>
 
-    <div class="rating-text">
-      @if (restaurant().currentRating > 0) {
-        <span>({{ restaurant().currentRating }}/5)</span>
-      } @else {
-        <span class="prompt">Cliquez !</span>
-      }
-    </div>
-  </div>
+  <div class="lieu">
+    <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+    </svg>
+    <span class="district">{{ restaurant().district }}</span>
+  </div>
+
+  <p class="specialty">
+    <span class="label">Spécialité :</span> {{ restaurant().specialty }}
+  </p>
+
+  <div class="rating-container">
+    <app-star-rating
+      [currentRating]="restaurant().currentRating"
+      (ratingChanged)="onRatingChanged($event)"
+    />
+
+    <p class="rating-label" [class.is-empty]="restaurant().currentRating === 0">
+      @if (restaurant().currentRating > 0) {
+        ({{ restaurant().currentRating }}/5)
+      } @else {
+        Cliquez !
+      }
+    </p>
+  </div>
 </div>

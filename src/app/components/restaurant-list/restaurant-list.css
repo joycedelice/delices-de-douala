@@ -1,58 +1,50 @@
-.restaurantList {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.section-title {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1b2a4a;
+  margin-bottom: 0.25rem;
 }
 
-.titleList {
+.section-title .accent {
+  color: #f5a623;
+}
+
+.section-subtitle {
   text-align: center;
-  margin-bottom: 35px;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
 }
 
-.titleList h2 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 32px;
-  color: #222;
-  margin: 8px 0;
-}
-
-.titleList h2 span {
-  color: #d89b18;
-}
-
-.titleList p {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.empty {
+  text-align: center;
   color: #777;
-  font-size: 16px;
-  margin-top: 8px;
+  font-size: 1.1rem;
+  margin-top: 3rem;
 }
 
-.resto {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 100%;
-  flex-wrap: wrap;
+/* Grille principale des cartes */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
 
-/* Style de l'état vide */
-.empty-state {
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  border: 1px dashed #ccc;
-  width: 100%;
-  max-width: 500px;
+/* Adaptabilité responsive */
+@media (max-width: 900px) {
+  .restaurant-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.empty-msg {
-  color: #666;
-  font-size: 16px;
-  margin: 0;
+@media (max-width: 550px) {
+  .restaurant-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
 }

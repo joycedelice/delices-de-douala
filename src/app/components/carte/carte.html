@@ -1,46 +1,49 @@
-<div class="carte">
-
-  <!-- Plat du jour -->
+<div class="carte-container">
+  
+  <!-- Mission 5: Section Plat du Jour -->
   @if (platDuJour(); as plat) {
-    <div class="plat-du-jour">
-      <span class="badge">🌟 Plat du jour</span>
-      <span class="plat-nom">{{ plat.nom }}</span>
-      <span class="plat-prix">{{ plat.prix }} FCFA</span>
-      <a [routerLink]="['/plats', plat.slug]" class="btn-detail-sm">Voir</a>
+    <div class="plat-du-jour-card">
+      <span class="badge-tag">⭐ Plat du Jour (Changera dans 5s)</span>
+      <h2>{{ plat.nom }}</h2>
+      <p class="prix">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 1] -->
     </div>
   }
 
-  <!-- Filtres par catégorie -->
-  <div class="filtres-categorie">
+  <!-- Mission 4: Filtres par Catégorie -->
+  <div class="categories-bar">
     @for (cat of categories; track cat) {
-      <button
-        class="btn-categorie"
-        [class.active]="categorieSelectionnee() === cat"
-        (click)="selectionnerCategorie(cat)">
+      <button 
+        [class.active]="selectedCategorie() === cat"
+        (click)="selectedCategorie.set(cat)">
         {{ cat }}
       </button>
     }
   </div>
 
-  @if (platsResource.isLoading()) {
-    <p class="loading-message">Chargement de la carte...</p>
-  } @else if (platsResource.error()) {
-    <p class="error-message">Impossible de charger le menu. Veuillez réessayer plus tard.</p>
-  } @else if (platsFiltres().length === 0) {
-    <p class="empty-message">Aucun plat dans cette catégorie.</p>
+  <!-- Mission 3: Gestion des 3 états réactifs de httpResource -->
+  @if (platsRes.isLoading()) {
+    <div class="state-msg loading">Chargement du menu délicieux...</div>
+  } @else if (platsRes.error()) {
+    <div class="state-msg error">Erreur lors de la récupération du menu.</div>
   } @else {
-    <ul class="plats-list">
-      @for (plat of platsFiltres(); track plat.id) {
-        <li class="plat-item">
-          <div class="plat-info">
-            <span class="plat-nom">{{ plat.nom }}</span>
-            <span class="plat-categorie">{{ plat.categorie }}</span>
-            <span class="plat-prix">{{ plat.prix }} FCFA</span>
-          </div>
-          <a [routerLink]="['/plats', plat.slug]" class="btn-detail">Détails →</a>
-        </li>
-      }
-    </ul>
-  }
 
+    <!-- Mission 2: Liste avec @if et @for -->
+    <div class="plats-grid">
+      @for (plat of platsFiltres(); track plat.id) { <!--[cite: 1] -->
+        <div class="plat-card" [class.indisponible]="!plat.disponible">
+          <div class="plat-header">
+            <h3>{{ plat.nom }}</h3>
+            @if (!plat.disponible) {
+              <span class="badge-epuise">Épuisé</span> <!-- Bonus[cite: 1] -->
+            }
+          </div>
+          <span class="category-tag">{{ plat.categorie }}</span>
+          <p class="price-tag">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 1] -->
+        </div>
+      } @empty {
+        <p class="empty">Aucun plat disponible dans cette catégorie.</p>
+      }
+    </div>
+
+  }
 </div>
