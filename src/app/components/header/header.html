@@ -1,18 +1,34 @@
 <div class="header">
   <div class="logotitle">
-    <img src="images/logo.png" alt="">
-    
+    <img src="images/logo.png" alt="Logo Délices de Douala">
   </div>
   <div class="compt">
-  <div class="counter">
-    <h4>★ {{ ratedCount() }} / 6 </h4>
-    <p>restaurants notés</p>
+    <div class="counter">
+      <h4>★ {{ ratedCount() }} / 6 </h4>
+      <p>restaurants notés</p>
+    </div>
+    <!-- Séparateur vertical -->
+    <div class="divider"></div>
+    <div class="counter">
+      <h4>★ {{ averageRating() }} / 5</h4>
+      <p>note moyenne</p>
+    </div>
   </div>
-  <!-- Séparateur vertical -->
-  <div class="divider"></div>
-  <div class="counter ">
-    <h4>★ {{ averageRating()}} /5</h4>
-    <p>note moyenne</p>
-  </div>
-  </div>
+  <!-- Bouton Burger (visible uniquement sur écran mobile) -->
+  <button class="burger-btn" (click)="toggleMenu()" aria-label="Menu">
+    <span class="bar" [class.open]="menuOuvert()"></span>
+    <span class="bar" [class.open]="menuOuvert()"></span>
+    <span class="bar" [class.open]="menuOuvert()"></span>
+  </button>
+
+  <!-- Liens de navigation principaux -->
+  <nav class="nav-links" [class.active]="menuOuvert()">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="fermerMenu()">Accueil</a>
+    <a routerLink="/restaurants" routerLinkActive="active" (click)="fermerMenu()">Restaurants</a>
+    <a routerLink="/plats" routerLinkActive="active" (click)="fermerMenu()">Plats</a>
+    <a routerLink="/inscription" routerLinkActive="active" (click)="fermerMenu()">Inscription</a>
+    <a routerLink="/connexion" routerLinkActive="active" class="btn-connexion" (click)="fermerMenu()">Connexion</a>
+  </nav>
+
+
 </div>

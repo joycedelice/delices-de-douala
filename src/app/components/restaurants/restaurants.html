@@ -1,0 +1,19 @@
+<div class="toolbar">
+  <button 
+    [class.active]="sortDesc()" 
+    (click)="sortDesc.set(!sortDesc())">
+    Trier par note décroissante
+  </button>
+
+  <button 
+    [class.active]="onlyTopRated()" 
+    (click)="onlyTopRated.set(!onlyTopRated())">
+    Voir uniquement ≥ 4 ★
+  </button>
+</div>
+
+<!-- Envoi des restaurants calculés au composant enfant -->
+<app-restaurant-list 
+  [restaurants]="displayedRestaurants()" 
+  (restaurantRated)="onRestaurantRated($event)" 
+/>

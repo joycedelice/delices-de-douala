@@ -5,16 +5,15 @@
 
 <div class="grid">
   @if (restaurants().length === 0) {
-    <p class="empty">Aucun restaurant disponible pour le moment.</p>
+    <p class="empty">Aucun restaurant ne correspond à votre recherche.</p>
   } @else {
-   <!-- restaurant-list.html -->
-<div class="restaurant-grid">
-  @for (resto of restaurants(); track resto.id) {
-    <app-restaurant-card 
-      [restaurant]="resto" 
-      (ratingChanged)="onCardRated($event)" 
-    />
-  }
-</div>
+    <div class="restaurant-grid">
+      @for (resto of restaurants(); track resto.id) {
+        <app-restaurant-card 
+          [restaurant]="resto" 
+          (ratingChanged)="onCardRated($event)" 
+        />
+      }
+    </div>
   }
 </div>

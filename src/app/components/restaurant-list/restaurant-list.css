@@ -2,26 +2,33 @@
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1b2a4a;
+  color: #101827;
   margin-bottom: 0.25rem;
+  margin-top: 2rem;
 }
 
 .section-title .accent {
-  color: #f5a623;
+  color: #F4B942;
 }
 
 .section-subtitle {
   text-align: center;
-  color: #888;
-  font-size: 0.9rem;
+  color: #6b7280;
+  font-size: 0.95rem;
   margin-bottom: 2rem;
 }
 
 .empty {
   text-align: center;
-  color: #777;
+  color: #6b7280;
   font-size: 1.1rem;
   margin-top: 3rem;
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Grille principale des cartes */

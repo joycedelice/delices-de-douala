@@ -1,0 +1,120 @@
+/* Conteneur principal */
+:host {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* En-tête de page & Titre */
+.page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.main-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #101827;
+  margin-bottom: 0.5rem;
+}
+
+.main-title .accent {
+  color: #F4B942;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Barre de filtres */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.toolbar button {
+  background-color: #0f382c;
+  color: #ffffff;
+  border: 1.5px solid #165241;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px; /* Forme pilule */
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(15, 56, 44, 0.12);
+}
+
+.toolbar button .icon {
+  color: #F4B942;
+}
+
+.toolbar button:hover {
+  background-color: #165241;
+  border-color: #F4B942;
+  color: #F4B942;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 56, 44, 0.2);
+}
+
+/* État actif (filtre sélectionné) */
+.toolbar button.active {
+  background-color: #F4B942;
+  color: #0f382c;
+  border-color: #F4B942;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(244, 185, 66, 0.35);
+}
+
+.toolbar button.active .icon {
+  color: #0f382c;
+}
+
+/* Messages d'état HTTP */
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.loading {
+  background-color: rgba(244, 185, 66, 0.1);
+  color: #101827;
+  border: 1px solid #F4B942;
+}
+
+.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Responsive pour mobiles */
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar button {
+    width: 100%;
+    justify-content: center;
+  }
+}

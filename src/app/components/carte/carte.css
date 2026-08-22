@@ -8,7 +8,7 @@
 
 /* 1. Carte Plat du Jour */
 .plat-du-jour-card {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  background: linear-gradient(135deg, #0f382c 0%, #165241 100%);
   border: 2px solid #f5a623;
   border-radius: 16px;
   padding: 2rem;

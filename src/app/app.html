@@ -3,32 +3,7 @@
   [averageRating]="averageRating()"
 />
 
-<div class="toolbar">
-  <button
-    [class.active]="sortDesc()"
-    (click)="sortDesc.set(!sortDesc())"
-  >
-    {{ sortDesc() ? 'Annuler le tri' : 'Trier par note décroissante' }}
-  </button>
-  <button
-    [class.active]="onlyTopRated()"
-    (click)="onlyTopRated.set(!onlyTopRated())"
-  >
-    {{ onlyTopRated() ? 'Afficher tous' : 'Voir uniquement ≥ 4 ★' }}
-  </button>
-</div>
-
-<!-- Gestion des 3 états réactifs httpResource -->
-@if (restaurantsRes.isLoading()) {
-  <p class="loading">Chargement des délices de Douala...</p>
-} @else if (restaurantsRes.error()) {
-  <p class="error">Impossible de joindre le serveur. Vérifiez l'URL de l'API.</p>
-} @else {
-  <app-restaurant-list 
-    [restaurants]="displayedRestaurants()" 
-    (restaurantRated)="onRestaurantRated($event)" 
-  />
-}
-<app-carte></app-carte>
-<app-inscription></app-inscription>
-<app-connexion></app-connexion>
+<main class="content-container">
+  <!-- Affichage dynamique des composants via le routeur -->
+  <router-outlet />
+</main>
