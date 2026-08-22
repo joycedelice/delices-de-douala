@@ -3,21 +3,34 @@
   <!-- Plat du Jour -->
   @if (platDuJour(); as plat) {
     <div class="plat-du-jour-card">
-      <span class="badge-tag">⭐ Plat du Jour (Changera dans 5s)</span>
-      <h2>{{ plat.nom }}</h2>
-      <p class="prix">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 2] -->
+      @if (plat.imageUrl) {
+        <div class="plat-du-jour-image">
+          <img [src]="plat.imageUrl" [alt]="plat.nom" />
+        </div>
+      }
+      <div class="plat-du-jour-content">
+        <span class="badge-tag">⭐ Plat du Jour (Changera dans 5s)</span>
+        <h2>{{ plat.nom }}</h2>
+        <p class="prix">{{ plat.prix }}FCFA</p>
+      </div>
     </div>
   }
 
-  <!-- Champ de Recherche par nom -->
-  <div class="search-bar">
+ <!-- Champ de Recherche par nom -->
+<div class="search-bar">
+  <div class="search-input-wrapper">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
     <input 
       type="text" 
-      placeholder="🔍 Rechercher un plat..."
+      placeholder="Rechercher un plat..."
       [value]="searchTerm()"
       (input)="onSearchChange($event)"
     />
   </div>
+</div>
 
   <!-- Filtres par Catégorie -->
   <div class="categories-bar">
@@ -37,16 +50,26 @@
     <div class="state-msg error">Erreur lors de la récupération du menu.</div>
   } @else {
     <div class="plats-grid">
-      @for (plat of platsFiltres(); track plat.id) { <!--[cite: 2] -->
+      @for (plat of platsFiltres(); track plat.id) {
         <div class="plat-card" [class.indisponible]="!plat.disponible">
-          <div class="plat-header">
-            <h3>{{ plat.nom }}</h3>
+          
+          <!-- Image du plat -->
+          <div class="plat-image-container">
+            <img [src]="plat.imageUrl || 'images/plat1.jpg'" [alt]="plat.nom" class="plat-image" />
             @if (!plat.disponible) {
-              <span class="badge-epuise">Épuisé</span> <!--[cite: 2] -->
+              <span class="badge-epuise">Épuisé</span>
             }
           </div>
-          <span class="category-tag">{{ plat.categorie }}</span>
-          <p class="price-tag">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 2] -->
+
+          <!-- Contenu de la carte -->
+          <div class="plat-body">
+            <div class="plat-header">
+              <h3>{{ plat.nom }}</h3>
+            </div>
+            <span class="category-tag">{{ plat.categorie }}</span>
+            <p class="price-tag">{{ plat.prix }}FCFA</p>
+          </div>
+
         </div>
       } @empty {
         <p class="empty">Aucun plat ne correspond à votre recherche.</p>

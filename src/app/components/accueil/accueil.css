@@ -6,7 +6,7 @@
 .hero-container {
   position: relative;
   width: 100%;
-  min-height: 80vh;
+  min-height: 100vh;
   /* Le slash pointe vers la racine du dossier public/ */
   background-image: url('/images/hero.png');
   background-size: cover;
@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 /* Voile sombre pour faire ressortir le texte blanc */
@@ -24,7 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(15, 24, 39, 0.75);
+  background: rgba(26, 26, 26, 0.504);
   z-index: 1;
 }
 
@@ -102,7 +103,7 @@
 /* Responsive */
 @media (max-width: 600px) {
   .hero-container {
-    min-height: 70vh;
+    min-height: 100vh;
   }
 
   .hero-title {
@@ -114,11 +115,13 @@
   }
 
   .hero-buttons {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
   }
 
   .btn-primary, .btn-secondary {
-    width: 100%;
+    width: 50%;
     text-align: center;
   }
 }

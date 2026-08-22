@@ -4,4 +4,5 @@ export interface Plat {
   prix: number;
   categorie: 'Plats' | 'Grillades' | 'Végétarien' | 'Boissons';
   disponible: boolean;
+  imageUrl?: string; // Ajout de l'image (optionnelle)
 }
