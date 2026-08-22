@@ -1,15 +1,25 @@
 <div class="carte-container">
   
-  <!-- Mission 5: Section Plat du Jour -->
+  <!-- Plat du Jour -->
   @if (platDuJour(); as plat) {
     <div class="plat-du-jour-card">
       <span class="badge-tag">⭐ Plat du Jour (Changera dans 5s)</span>
       <h2>{{ plat.nom }}</h2>
-      <p class="prix">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 1] -->
+      <p class="prix">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 2] -->
     </div>
   }
 
-  <!-- Mission 4: Filtres par Catégorie -->
+  <!-- Champ de Recherche par nom -->
+  <div class="search-bar">
+    <input 
+      type="text" 
+      placeholder="🔍 Rechercher un plat..."
+      [value]="searchTerm()"
+      (input)="onSearchChange($event)"
+    />
+  </div>
+
+  <!-- Filtres par Catégorie -->
   <div class="categories-bar">
     @for (cat of categories; track cat) {
       <button 
@@ -20,30 +30,27 @@
     }
   </div>
 
-  <!-- Mission 3: Gestion des 3 états réactifs de httpResource -->
+  <!-- Affichage des Plats -->
   @if (platsRes.isLoading()) {
     <div class="state-msg loading">Chargement du menu délicieux...</div>
   } @else if (platsRes.error()) {
     <div class="state-msg error">Erreur lors de la récupération du menu.</div>
   } @else {
-
-    <!-- Mission 2: Liste avec @if et @for -->
     <div class="plats-grid">
-      @for (plat of platsFiltres(); track plat.id) { <!--[cite: 1] -->
+      @for (plat of platsFiltres(); track plat.id) { <!--[cite: 2] -->
         <div class="plat-card" [class.indisponible]="!plat.disponible">
           <div class="plat-header">
             <h3>{{ plat.nom }}</h3>
             @if (!plat.disponible) {
-              <span class="badge-epuise">Épuisé</span> <!-- Bonus[cite: 1] -->
+              <span class="badge-epuise">Épuisé</span> <!--[cite: 2] -->
             }
           </div>
           <span class="category-tag">{{ plat.categorie }}</span>
-          <p class="price-tag">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 1] -->
+          <p class="price-tag">{{ plat.prix | currency:'XAF':'symbol':'1.0-0' }}</p> <!--[cite: 2] -->
         </div>
       } @empty {
-        <p class="empty">Aucun plat disponible dans cette catégorie.</p>
+        <p class="empty">Aucun plat ne correspond à votre recherche.</p>
       }
     </div>
-
   }
 </div>

@@ -1,14 +1,15 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Header } from './components/header/header';
 import { RestaurantListComponent } from './components/restaurant-list/restaurant-list';
-import { Restaurant } from './models/restaurant'; // <-- Import ajouté !
 import { RestaurantService } from './services/restaurant';
 import { CarteComponent } from './components/carte/carte';
+import { InscriptionComponent } from './inscription/inscription';
+import { ConnexionComponent } from './connexion/connexion';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, RestaurantListComponent, CarteComponent],
+  imports: [Header, RestaurantListComponent, CarteComponent, InscriptionComponent, ConnexionComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

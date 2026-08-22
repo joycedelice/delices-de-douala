@@ -1,0 +1,102 @@
+<div class="inscription-container">
+  <h2>Inscription - Délices de Douala</h2>
+
+  <form [formGroup]="inscriptionForm" (ngSubmit)="soumettre()" class="form-card">
+    
+    <!-- Prénom & Nom -->
+    <div class="input-group">
+      <div class="field-container">
+        <div class="input-wrapper">
+          <input type="text" placeholder="Prénom" formControlName="firstName" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+          </svg>
+        </div>
+        @if (firstName.touched && firstName.invalid) {
+          <small class="erreur">Le prénom est requis.</small>
+        }
+      </div>
+
+      <div class="field-container">
+        <div class="input-wrapper">
+          <input type="text" placeholder="Nom" formControlName="lastName" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+          </svg>
+        </div>
+        @if (lastName.touched && lastName.invalid) {
+          <small class="erreur">Le nom est requis.</small>
+        }
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="input-group">
+      <div class="field-container">
+        <div class="input-wrapper">
+          <input type="email" placeholder="Adresse email" formControlName="email" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+        </div>
+        @if (email.touched && email.invalid) {
+          @if (email.hasError('required')) {
+            <small class="erreur">L'email est requis.</small>
+          } @else if (email.hasError('email')) {
+            <small class="erreur">Format email invalide.</small>
+          }
+        }
+      </div>
+    </div>
+
+    <!-- Mot de passe & Confirmation -->
+    <div class="input-group">
+      <div class="field-container">
+        <div class="input-wrapper">
+          <input type="password" placeholder="Mot de passe" formControlName="password" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+        </div>
+        @if (password.touched && password.invalid) {
+          @if (password.hasError('required')) {
+            <small class="erreur">Mot de passe requis.</small>
+          } @else if (password.hasError('minlength')) {
+            <small class="erreur">6 caractères minimum.</small>
+          }
+        }
+      </div>
+
+      <div class="field-container">
+        <div class="input-wrapper">
+          <input type="password" placeholder="Confirmation" formControlName="confirmPassword" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+        @if (confirmPassword.touched && confirmPassword.invalid) {
+          <small class="erreur">La confirmation est requise.</small>
+        }
+      </div>
+    </div>
+
+    <!-- Validateur croisé (mots de passe différents) -->
+    @if (inscriptionForm.hasError('motsDePasseDifferents') && confirmPassword.touched) {
+      <div class="erreur block-erreur">
+        ⚠️ Les mots de passe ne correspondent pas.
+      </div>
+    }
+
+    <!-- Bouton de soumission -->
+    <div class="input-group">
+      <button type="submit" [disabled]="inscriptionForm.invalid">
+        Créer mon compte
+      </button>
+    </div>
+  </form>
+
+  <!-- Aperçu JSON -->
+  <div class="apercu">
+    <pre>{{ inscriptionForm.value | json }}</pre>
+  </div>
+</div>

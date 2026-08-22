@@ -1,8 +1,7 @@
-// models/user.ts
 export interface User {
-  id?: number;
-  firstName?: string;
-  lastName?: string;
+  id?: string | number;
   email: string;
   password: string;
+  firstName?: string;
+  lastName?: string;
 }

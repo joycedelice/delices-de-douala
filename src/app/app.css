@@ -1,3 +1,14 @@
+:root {
+  --primary: #f5a623;
+  --primary-hover: #d98e19;
+  --dark-bg: #18181b;
+  --page-bg: #fafafa;
+  --card-bg: #ffffff;
+  --text-main: #27272a;
+  --text-muted: #71717a;
+  --danger: #ef4444;
+}
+
 .toolbar {
   display: flex;
   gap: 0.75rem;
@@ -30,3 +41,4 @@
   color: #ffffff;
   box-shadow: 0 2px 6px rgba(245, 166, 35, 0.35);
 }
+
